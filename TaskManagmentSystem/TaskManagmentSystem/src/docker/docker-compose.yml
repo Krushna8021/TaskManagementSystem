@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    ports:
+      - "8089:8089"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:oracle:thin:@//localhost:1521/XE
+      SPRING_DATASOURCE_USERNAME: HR
+      SPRING_DATASOURCE_PASSWORD: hr
+
+  oracle-db:
+    image: oracleinanutshell/oracle-xe-11g
+    environment:
+      ORACLE_ALLOW_REMOTE: "true"
+      ORACLE_PASSWORD: hr
+#    ports:
+#      - "1521:1521"
